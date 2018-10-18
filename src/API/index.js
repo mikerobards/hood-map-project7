@@ -1,7 +1,7 @@
 // FourSquareAPI using fetch
 
-class Helper {
-	static baseURL() {
+class FourSquare {
+	static bURL() {
 		return "https://api.foursquare.com/v2";
 	}
 	static auth() {
@@ -14,38 +14,41 @@ class Helper {
 			.map(key => `${key}=${keys[key]}`)
 			.join("&");
 	}
-	static urlBuilder(urlPrams) {
-		if (!urlPrams) {
+	static urlBuild(url) {
+		if (!url) {
 			return "";
 		} else {
-			return Object.keys(urlPrams)
-				.map(key => `${key}=${urlPrams[key]}`)
+			return Object.keys(url)
+				.map(key => `${key}=${url[key]}`)
 				.join("&");
 		}
 	}
-	static headers() {
+	static head() {
 		return {
 			Accept: "application/json"
 		};
 	}
-	static simpleFetch(endPoint, method, urlPrams) {
+	static simFetch(end, method, url, error) {
 		let requestData = {
 			method,
-			headers: Helper.headers()
+			headers: FourSquare.head()
 		};
-		return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`, requestData)
-			.then(response => response.json());
+		return fetch(`${FourSquare.bURL()}${end}?${FourSquare.auth()}&${FourSquare.urlBuild(url)}`, requestData)
+			.then(response => response.json())
+			.catch(error => {
+				console.log(error);
+			});
 	}
 }
 
 export default class foursquareAPI {
-	static search(urlPrams) {
-		return Helper.simpleFetch("/venues/search", "GET", urlPrams);
+	static search(url) {
+		return FourSquare.simFetch("/venues/search", "GET", url);
 	}
 	static getVenueDetails(VENUE_ID) {
-		return Helper.simpleFetch(`/venues/${VENUE_ID}`, "GET");
+		return FourSquare.simFetch(`/venues/${VENUE_ID}`, "GET");
 	}
 	static getVenuePhoto(VENUE_ID) {
-		return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, "GET");
+		return FourSquare.simFetch(`/venues/${VENUE_ID}/photos`, "GET");
 	}
 }
