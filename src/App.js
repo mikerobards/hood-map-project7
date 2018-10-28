@@ -18,6 +18,7 @@ class App extends Component {
       }
     };
   }
+  // marker functionality
   closeMarkers = () => {
       const markers = this.state.markers.map(marker => {
         marker.isOpen = false;
@@ -42,6 +43,7 @@ class App extends Component {
     this.markerClick(marker);
   };
 
+  // API fetch
   componentDidMount() {
     foursquareAPI.search({
       near: "Atlanta, GA",
@@ -59,7 +61,12 @@ class App extends Component {
           id: venue.id
         };
       });
+      window.gm_authFailure = () =>
+      alert(
+        "Google Maps has encountered an error. Please check the console for more information"
+      );
       this.setState({ venues, center, markers });
+
       console.log(results)
     });
   };

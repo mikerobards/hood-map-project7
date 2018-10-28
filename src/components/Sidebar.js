@@ -10,6 +10,7 @@ export default class Sidebar extends Component {
     };
   }
 
+  // filters search
   workFilterVenues = () => {
     if(this.state.query.trim() !== "") {
       const venues = this.props.venues.filter(venue =>
