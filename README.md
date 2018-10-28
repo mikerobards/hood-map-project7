@@ -21,7 +21,7 @@ Click on the 'X' in the picture to close the window.
 
 To filter the results, simple type into the search bar. The listing will filter based on your input.
 
-## Dependencies!
+# Dependencies!
 
 This application was produced using the following:
 
