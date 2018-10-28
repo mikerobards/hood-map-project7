@@ -10,15 +10,21 @@ const MyMapComponent = withScriptjs(withGoogleMap(props => (
   >
     {props.markers && props.markers
       .filter(marker => marker.isVisible)
-      .map((marker, index) => (
+      .map((marker, index) => {
+        const venueInfo = props.venues.find(venue => venue.id === marker.id);
+        return(
         <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} onClick={() => props.markerClick(marker)}>
-          {marker.isOpen && (
+          {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
-            <p>Hello</p>
+              <React.Fragment>
+                <img src={`${venueInfo.bestPhoto.prefix}150x150${venueInfo.bestPhoto.suffix}`} alt= {"Venue"}/>
+                <p>{venueInfo.name}</p>
+              </React.Fragment>
             </InfoWindow>
           )}
         </Marker>
-      ))}
+      );
+    })}
   </GoogleMap>
 ))
 );
