@@ -37,11 +37,14 @@ export default class Sidebar extends Component {
 
   render() {
     return (<div>
+      <h1>Atlanta Pizza Search!</h1>
       <form className="form-inline mt-4 mb-4">
         <i className="fa fa-search" aria-hidden="true"></i>
-          <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Venues" aria-label="Search" />
+          <input className="form-control form-control-sm ml-3 w-75" type={"search"} placeholder={"Search Venues"} aria-label="Search" onChange={this.workChange}/>
       </form>
-      <VenueList {...this.props} />
+      <VenueList {...this.props}
+      venues={this.workFilterVenues()}
+      listItemClick={this.props.listItemClick}/>
     </div>);
   }
 }
