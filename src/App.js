@@ -66,8 +66,6 @@ class App extends Component {
         "Google Maps has encountered an error. Please check the console for more information"
       );
       this.setState({ venues, center, markers });
-
-      console.log(results)
     });
   };
 
