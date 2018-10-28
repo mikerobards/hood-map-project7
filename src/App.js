@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
 import foursquareAPI from './API';
+import Sidebar from './components/Sidebar';
 
 
 class App extends Component {
@@ -14,8 +15,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Map />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <Sidebar />
+          </div>
+          <div className="col-md-9">
+            <Map />
+          </div>
+        </div>
       </div>
     );
   }
