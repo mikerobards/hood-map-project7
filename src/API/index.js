@@ -36,6 +36,7 @@ class FourSquare {
 		return fetch(`${FourSquare.bURL()}${end}?${FourSquare.auth()}&${FourSquare.urlBuild(url)}`, requestData)
 			.then(response => response.json())
 			.catch(error => {
+				alert("Four Square has failed to load");
 				console.log(error);
 			});
 	}
