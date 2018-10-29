@@ -6,9 +6,9 @@ class FourSquare {
 	}
 	static auth() {
 		const keys = {
-			client_id: "GA3VKCI5IWBQQIILIG202I1FK34A1WFIRBIVHWOFKYMDQSPQ",
-			client_secret: "OOPUMDBXVOEZ10CC4Y0GGAH3PIYL0HTFDFX3ILJFPI2SZIPL",
-			v: "20180930"
+			client_id: "MFGTJQW54XBIP0TJI0ATZWFWJHJF5AYP3WIMN3HPYAPIS5QA",
+			client_secret: "D1QXLPRCS4B4X4VJVWSTGTFO2C3Q0L0R22U2SBVZAKXAPXRL",
+			v: "20181029"
 		};
 		return Object.keys(keys)
 			.map(key => `${key}=${keys[key]}`)
@@ -36,6 +36,7 @@ class FourSquare {
 		return fetch(`${FourSquare.bURL()}${end}?${FourSquare.auth()}&${FourSquare.urlBuild(url)}`, requestData)
 			.then(response => response.json())
 			.catch(error => {
+				alert("Four Square has failed to load");
 				console.log(error);
 			});
 	}

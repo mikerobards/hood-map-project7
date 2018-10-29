@@ -66,6 +66,9 @@ class App extends Component {
         "Google Maps has encountered an error. Please check the console for more information"
       );
       this.setState({ venues, center, markers });
+    })
+    .catch(error => {
+      alert("An error has occured loading FourSquare" + error);
     });
   };
 
