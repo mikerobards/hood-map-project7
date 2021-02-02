@@ -6,8 +6,8 @@ class FourSquare {
 	}
 	static auth() {
 		const keys = {
-			client_id: "MFGTJQW54XBIP0TJI0ATZWFWJHJF5AYP3WIMN3HPYAPIS5QA",
-			client_secret: "D1QXLPRCS4B4X4VJVWSTGTFO2C3Q0L0R22U2SBVZAKXAPXRL",
+			client_id: "",
+			client_secret: "",
 			v: "20181029"
 		};
 		return Object.keys(keys)
